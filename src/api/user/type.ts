@@ -1,11 +1,12 @@
 // 登录接口需要携带参数类型
 export interface loginForm {
-  username: String,
-  password: String
+  username: string,
+  password: string
 }
 
 interface dataType {
-  token: String
+  token?: string,
+  message?: string
 }
 
 // 登录接口返回的数据类型
@@ -16,14 +17,14 @@ export interface loginResponseData {
 
 interface userInfo {
   userId: number,
-  avatar: String,
-  username: String,
-  password: String,
-  desc: String,
-  roles: String[],
-  buttons: String[],
-  routes: String[],
-  token: String,
+  avatar: string,
+  username: string,
+  password: string,
+  desc: string,
+  roles: string[],
+  buttons: string[],
+  routes: string[],
+  token: string,
 }
 
 interface user {
