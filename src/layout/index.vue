@@ -2,7 +2,7 @@
   <div class="layout_container">
     <!-- 左侧菜单 -->
      <!-- 标签动态类 -->
-    <div class="layout_slider" :class="{fold:layOutSettingStore.fold?true:false}">
+    <div class="layout_slider" >
       <Logo></Logo>
       <el-scrollbar class="scrollbal">
         <!-- 菜单组件 -->
@@ -70,6 +70,11 @@ defineOptions({
     background: variable.$base-menu-background;
     transition: all 0.5s;
 
+    &.fold{
+      width:variable.$base-menu-min-width;
+
+    }
+
     .scrollbal{
       height: calc(100vh - variable.$base-menu-logo-height);
       .el-menu{
@@ -79,9 +84,7 @@ defineOptions({
     }
   }
 
-  .fold{
-    width:variable.$base-menu-min-width;
-  }
+
 
   .layout_tabbar{
     position: fixed;

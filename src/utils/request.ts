@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
+import useUserStore from "../store/modules/user";
 
 // axios二次封装，使用请求和响应拦截器
-
 // 创建axios实例
 let request = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API, //基础路径上会携带 /api
@@ -11,6 +11,12 @@ let request = axios.create({
 
 // 请求拦截器
 request.interceptors.request.use((config) => {
+  let userStore = useUserStore()
+  // 获取用户相关的小仓库，获取token
+  if (userStore.token) {
+    config.headers.token = userStore.token
+  }
+
   // config配置对象，有headers属性请求头，经常给服务器端携带公共参数
   // 返回配置对象
   return config
@@ -20,8 +26,6 @@ request.interceptors.request.use((config) => {
 
 // 响应拦截器
 request.interceptors.response.use((response) => {
-
-
   return response.data
 }, (error) => {
 

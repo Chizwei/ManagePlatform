@@ -45,7 +45,7 @@
 import {User,Lock} from '@element-plus/icons-vue'
 import { reactive,ref } from 'vue';
 import useUserStore from '../../store/modules/user';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { ElMessage, ElNotification } from 'element-plus';
 
 // 表单数据
@@ -59,19 +59,24 @@ let router = useRouter()
 let loading = ref(false) //控制按钮加载效果
 // 获取表单元素
 let loginForms = ref()
-
+let route = useRoute()
 // 登录按钮事件
 const login = async ()=>{
   // 发起请求之前保证所有校验通过
   await loginForms.value.validate()
-
-
   // 开始加载，加载效果
   loading.value = true
   try{
     await useStore.userLogin(loginForm)
     // 跳转到首页
-    router.push('/')
+    // 添加判断，有query参数，往query跳转
+    let redirect:any = route.query.redirect
+    if(!redirect){
+      router.push('/')
+    }else{
+      router.push(redirect)
+    }
+
     let msg = getTime()
     
     ElNotification({
