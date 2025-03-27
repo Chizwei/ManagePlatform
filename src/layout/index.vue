@@ -103,7 +103,6 @@ defineOptions({
     position: absolute;
     width:calc(100% - variable.$base-menu-width);
     height: calc(100vh - variable.$base-tabbar-height);
-    background: skyblue;
     left: variable.$base-menu-width;
     top: variable.$base-tabbar-height;
     padding: 20px;

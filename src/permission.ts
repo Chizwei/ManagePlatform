@@ -46,7 +46,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         } catch (error) {
           // token过期 或者 用户手动修改本地存储token
           // 退出登录
-          userStore.userLogout()
+          await userStore.userLogout()
           next({ path: '/login', query: { redirect: to.path } })
         }
       }
@@ -73,8 +73,6 @@ router.afterEach((to: any, from: any) => {
 
   // 进度条结束
   nprogress.done()
-
-
 
 })
 

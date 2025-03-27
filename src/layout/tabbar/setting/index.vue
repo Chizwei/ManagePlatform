@@ -52,10 +52,10 @@ const fullScreen = ()=>{
 let router = useRouter()
 let route = useRoute()
 // 退出登录
-const logout = ()=>{
+const logout = async ()=>{
   // 1、向服务器发起请求，退出登录接口
   // 2、仓库清空用户相关数据
-  userStore.userLogout()
+  await userStore.userLogout()
   // 3、跳转到登录页面
   router.push({path:'/login',query:{redirect:route.path}})
 }

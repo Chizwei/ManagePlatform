@@ -83,7 +83,7 @@ const login = async ()=>{
       title:`hi! ${msg}好！`,
       message:'欢迎回来',
       type:'success',
-      duration:2000,
+      duration:1500,
     })
     // 登录成功,结束加载
     loading.value = false
