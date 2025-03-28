@@ -31,7 +31,6 @@ watch(()=>layoutSettingStore.refesh,()=>{
 
   // dom更新完毕,重新创建
   // 不要使用延时器,时间无法控制
-  console.log(layoutSettingStore.refesh);
   
   nextTick(()=>{
     flag.value = false
